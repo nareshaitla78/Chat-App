@@ -71,9 +71,9 @@ module.exports.resetPassword = async (req, res) => {
       user.resetTokenExpiration = resetTokenExpiration;
   
       await user.save();
-      console.log(process.env.HOST,"hosttttttttttttttttttttt")
       const resetLink = `${process.env.HOST}/reset-password/${resetToken}`;
-  
+      console.log(process.env.HOST,resetLink,"hosttttttttttttttttttttt")
+      
       const htmlContent = `
             <html>
                 <body style="font-family: Arial, sans-serif; background-color: #131324; color: #ffffff;">
