@@ -71,7 +71,7 @@ module.exports.resetPassword = async (req, res) => {
       user.resetTokenExpiration = resetTokenExpiration;
   
       await user.save();
-  
+      console.log(process.env.HOST,"hosttttttttttttttttttttt")
       const resetLink = `${process.env.HOST}/reset-password/${resetToken}`;
   
       const htmlContent = `
@@ -104,7 +104,7 @@ module.exports.resetPassword = async (req, res) => {
   
       res.json({ message: 'We have sent instructions on resetting your password to your email address.', status: true });
     } catch (error) {
-      console.error(error);
+      console.error(error,process.env.HOST);
       res.status(500).json({ message: 'Error processing your request.', status: false });
     }
   };
