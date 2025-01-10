@@ -33,3 +33,23 @@ module.exports.register= async (req,res,next)=>{
         return res.json({message:"Internal server error",status:false});
     }
 }
+
+module.exports.login= async (req,res,next)=>{
+    try{
+        const {username,password}=req.body;
+        const user=await User.findOne({username});
+        
+        if(!user){
+            return res.json({message:"Invalid username or password",status:false});
+        } 
+        const isPasswordValid=await bcrypt.compare(password,user.password);
+        if(!isPasswordValid){
+            return res.json({message:"Invalid username or password",status:false});
+        }
+        delete user.password;;
+        return res.json({status:true,message:"Login successful",user});  
+    }
+    catch(err){
+        next(err);
+    }
+}

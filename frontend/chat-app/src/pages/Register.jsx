@@ -6,6 +6,8 @@ import { toast,ToastContainer } from "react-toastify";
 import axios from "axios";
 import 'react-toastify/dist/ReactToastify.css';
 import { registerRoute } from "../utils/APIRoutes";
+const logo=require('../assets/logo1.png');
+
 function Register() {
     const navigate=useNavigate();
     const [values,setValues]=useState({
@@ -32,7 +34,7 @@ function Register() {
         }
         if(data.status==true){
             localStorage.setItem("chat-app-user",JSON.stringify(data.user));
-            navigate("/chat");
+            navigate("/");
         }
     }
     }
@@ -110,6 +112,7 @@ function Register() {
     <FormContainer>
         <form onSubmit={event=>handleSubmit(event)}>
         <div className="brand">
+            {/* <img src={logo} alt="logo" width="100px"/> */}
             <h1>HuntFor</h1>
         </div>
         <input type="text" placeholder="Username" name="username" onChange={(e)=>handleChange(e)}/>
@@ -169,6 +172,10 @@ const FormContainer = styled.div`
             font-size: 2rem;
             text-transform: uppercase;
             
+            }
+            img{
+            width:50px;
+            border-radius: 50%;
             }
         button{
             padding: 1rem 2rem;
