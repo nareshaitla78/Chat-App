@@ -65,18 +65,34 @@ function Login() {
     return ( 
     <>
     
-    <FormContainer>
-        <form onSubmit={event=>handleSubmit(event)}>
-        <div className="brand">
-            {/* <img src={logo} alt="logo" width="100px"/> */}
-            <h1>HuntFor</h1>
-        </div>
-        <input type="text" placeholder="Username" name="username" min="3" onChange={(e)=>handleChange(e)}/>
-        <input type="password" placeholder="Password" name="password" onChange={(e)=>handleChange(e)}/>
-        <button type="submit">Login</button>
-        <span>don't have an Account ? <Link to ="/register" >Register</Link></span>
-        </form>
-    </FormContainer>
+            <FormContainer>
+                <form onSubmit={(event) => handleSubmit(event)}>
+                <div className="brand">
+                    <h1>HuntFor</h1>
+                </div>
+                <input
+                    type="text"
+                    placeholder="Username"
+                    name="username"
+                    min="3"
+                    onChange={(e) => handleChange(e)}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={(e) => handleChange(e)}
+                />
+                <button type="submit">Login</button>
+                <span>
+                    Don't have an account? <Link to="/register">Register</Link>
+                </span>
+                <span>
+                    <Link to="/forgot-password">Forget Password?</Link>
+                </span>
+            </form>
+
+        </FormContainer>
     <ToastContainer/>
     </>);
     }
