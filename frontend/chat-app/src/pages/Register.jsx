@@ -20,7 +20,7 @@ function Register() {
         event.preventDefault();
         // console.log("Form submitted successfully",registerRoute);
         if(handleValidation()){
-            // console.log("Form submitted successfully",registerRoute);
+            console.log("Form submitted successfully",registerRoute);
             const {username,email,password} = values;
             const {data}=await axios.post(registerRoute,{username,email,password});
         if(data.status==false){
@@ -34,7 +34,7 @@ function Register() {
         }
         if(data.status==true){
             localStorage.setItem("chat-app-user",JSON.stringify(data.user));
-            navigate("/");
+            navigate("/home");
         }
     }
     }

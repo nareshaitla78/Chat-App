@@ -15,6 +15,7 @@ function Login() {
         password:"",
     })
    const handleSubmit = async (event) => {
+    console.log("Form submitted successfully",LoginRoute);
         event.preventDefault();
         if(handleValidation()){
             const {username,password} = values;
@@ -30,7 +31,7 @@ function Login() {
         }
         if(data.status==true){
             localStorage.setItem("chat-app-user",JSON.stringify(data.user));
-            navigate("/");
+            navigate("/home");
         }
     }
     }
@@ -72,7 +73,7 @@ function Login() {
         </div>
         <input type="text" placeholder="Username" name="username" min="3" onChange={(e)=>handleChange(e)}/>
         <input type="password" placeholder="Password" name="password" onChange={(e)=>handleChange(e)}/>
-        <button type="submit">Create User</button>
+        <button type="submit">Login</button>
         <span>don't have an Account ? <Link to ="/register" >Register</Link></span>
         </form>
     </FormContainer>

@@ -2,26 +2,26 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-function Chat() {
+function Home() {
   return (
-    <ChatContainer>
+    <HomeContainer>
       <div className="content">
         <h1>Welcome to HuntFor!</h1>
         <p>Join us to explore and connect with the world.</p>
-        <div className="buttons">
+        {/* <div className="buttons">
           <Link to="/register" className="btn">
             Register
           </Link>
           <Link to="/login" className="btn">
             Login
           </Link>
-        </div>
+        </div> */}
       </div>
-    </ChatContainer>
+    </HomeContainer>
   );
 }
 
-const ChatContainer = styled.div`
+const HomeContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,4 +71,4 @@ const ChatContainer = styled.div`
   }
 `;
 
-export default Chat;
+export default Home;
