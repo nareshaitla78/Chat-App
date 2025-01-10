@@ -18,6 +18,18 @@ const ResetPassword = () => {
       toast.error("Passwords do not match!");
       return;
     }
+    else if(password.length<6){ 
+      toast.error("Password should be atleast 6 characters long");
+      return;
+    }
+    else if(confirmPassword.length<6){
+      toast.error("Password should be atleast 6 characters long");
+      return;
+    }
+    else if(password==="" || confirmPassword===""){
+      toast.error("Password is required");
+      return;
+    }
 
     try {
       const response = await axios.post(
