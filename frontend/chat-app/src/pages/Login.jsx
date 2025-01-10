@@ -16,9 +16,7 @@ function Login() {
     })
    const handleSubmit = async (event) => {
         event.preventDefault();
-        // console.log("Form submitted successfully",registerRoute);
         if(handleValidation()){
-            // console.log("Form submitted successfully",registerRoute);
             const {username,password} = values;
             const {data}=await axios.post(LoginRoute,{username,password});
         if(data.status==false){
@@ -58,37 +56,6 @@ function Login() {
             });
             return false;
         }
-        // else if (password.length < 6){
-        //     toast.error("Password should be atleast 6 characters long.",{
-        //         position:"bottom-right",
-        //         autoClose:8000,
-        //         pauseOnHover:true,
-        //         draggable:true,
-        //         theme:"dark"
-        //     });
-        //     return false;
-        // }
-        // else if(username.length < 3){
-        //     toast.error("Username should be greater than 3 characters.",{
-        //         position:"bottom-right",
-        //         autoClose:8000,
-        //         pauseOnHover:true,
-        //         draggable:true,
-        //         theme:"dark"
-        //     });
-        //     return false;
-        // }
-        // else{
-        //     toast.success("User created successfully.",{
-        //         position:"top-right",
-        //         autoClose:8000,
-        //         pauseOnHover:true,
-        //         draggable:true,
-        //         theme:"dark",
-        //         color:"green"
-        //     });
-        //     return true;
-        // }
         return true;
     }
     const handleChange = (event) => {
