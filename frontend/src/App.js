@@ -17,7 +17,7 @@ export default function App(){
       <Route path="/home" element={< Home/>}></Route>
       <Route path="/" element={<Chat />}></Route>
       <Route path="/forgot-password" element={<ForgotPassword />}></Route>
-      <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
     </Routes>
     </BrowserRouter>
 

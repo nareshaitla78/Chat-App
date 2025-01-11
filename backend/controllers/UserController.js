@@ -55,7 +55,7 @@ module.exports.login= async (req,res,next)=>{
 }
 
 module.exports.resetPassword = async (req, res) => {
-    const { email } = req.body;
+    const { email,otp } = req.body;
   
     try {
       const user = await User.findOne({ email });
@@ -71,34 +71,31 @@ module.exports.resetPassword = async (req, res) => {
       user.resetTokenExpiration = resetTokenExpiration;
   
       await user.save();
-      const host=process.env.HOST || "http://localhost:3000";
-      const resetLink = `${host}/reset-password/${resetToken}`;
-      console.log(process.env.HOST,resetLink,"hosttttttttttttttttttttt",process.env.EMAIL_USER,process.env.SENDGRID_API_KEY);
+    //   const host=process.env.HOST || "http://localhost:3000";
+    //   const resetLink = `${host}/reset-password/${resetToken}`;
+    //   console.log(process.env.HOST,resetLink,"hosttttttttttttttttttttt",process.env.EMAIL_USER,process.env.SENDGRID_API_KEY);
       
       const htmlContent = `
-            <html>
-                <body style="font-family: Arial, sans-serif; background-color: #131324; color: #ffffff;">
+           <html>
+            <body style="font-family: Arial, sans-serif; background-color: #131324; color: #ffffff;">
                 <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #00000076; border-radius: 20px;">
-                    <h1 style="color: #007bff; text-align: center; text-transform: uppercase; font-size: 2rem;">Reset Password</h1>
-                    <p style="text-align: center; font-size: 1.1rem;">
-                    You requested a password reset. Click on the button below within the next 60 minutes to reset your password for your account <strong>${email}</strong>.
-                    </p>
-                    <div style="text-align: center;">
-                    <form action="${resetLink}" method="get">
-                        <button type="submit" style="padding: 1rem 2rem; background-color: #997af0; color: white; font-weight: bold; font-size: 1.1rem; border-radius: 5px; text-transform: uppercase; border: none; cursor: pointer;">
-                        Reset your password
-                        </button>
-                    </form>
-                    </div>
-                    <p style="text-align: center; font-size: 1rem;">
-                    If you are having any issues with your account,please send a email to nareshaitla1122@gmail.com.
-                    </p>
-                    <p style="text-align: center; font-size: 1rem;">
-                    If this was a mistake, please ignore this email and nothing will happen.
-                    </p>
+                <h1 style="color: #007bff; text-align: center; text-transform: uppercase; font-size: 2rem;">OTP Verification</h1>
+                <p style="text-align: center; font-size: 1.1rem;">
+                    Use the 6-digit OTP below to Reset Your Password. Please enter this OTP within the next 10 minutes.
+                </p>
+                <div style="text-align: center; font-size: 1.5rem; font-weight: bold; margin: 20px 0;">
+                    ${otp}
                 </div>
-                </body>
+                <p style="text-align: center; font-size: 1rem;">
+                    If you did not request this OTP, please ignore this email. Your account is secure.
+                </p>
+                <p style="text-align: center; font-size: 1rem;">
+                    For any assistance, contact us at <a href="mailto:nareshaitla1122@gmail.com" style="color: #4e0eff;">nareshaitla1122@gmail.com</a>.
+                </p>
+                </div>
+            </body>
             </html>
+
             `;  
       console.log(`Sending email to ${email} with reset link`);
       await sendEmail(email, 'Password Reset Request', htmlContent);
