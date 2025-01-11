@@ -5,7 +5,7 @@ const userRoutes=require('./routes/UserRoutes');
 require("dotenv").config();
 const app=express();
 
-app.use(cors({ origin: 'https://huntforr.netlify.app' }));
+app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth",userRoutes)

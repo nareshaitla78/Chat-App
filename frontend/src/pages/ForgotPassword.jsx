@@ -17,6 +17,7 @@ function ForgotPassword() {
                 toast.error(data.message, { theme: "dark" });
             }
         } catch (error) {
+            console.log(error,"error");
             toast.error("Something went wrong. Try again later.", { theme: "dark" });
         }
     };
