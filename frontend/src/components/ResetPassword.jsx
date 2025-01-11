@@ -19,11 +19,23 @@ const ResetPassword = () => {
       return;
     }
     else if(password.length<6){ 
-      toast.error("Password should be atleast 6 characters long");
+      toast.error("Password should be atleast 6 characters long",{
+        position:"top-center",
+        autoClose:5000,
+        pauseOnHover:true,
+        draggable:true,
+        theme:"dark"
+      });
       return;
     }
     else if(confirmPassword.length<6){
-      toast.error("Password should be atleast 6 characters long");
+      toast.error("Password should be atleast 6 characters long",{
+        position:"top-center",
+        autoClose:5000,
+        pauseOnHover:true,
+        draggable:true,
+        theme:"dark"
+      });
       return;
     }
     else if(password==="" || confirmPassword===""){
