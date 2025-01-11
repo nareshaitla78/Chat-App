@@ -71,7 +71,7 @@ module.exports.resetPassword = async (req, res) => {
       user.resetTokenExpiration = resetTokenExpiration;
   
       await user.save();
-      const resetLink = `/reset-password/${resetToken}`;
+      const resetLink = `${process.env.HOST}/reset-password/${resetToken}`;
       console.log(process.env.HOST,resetLink,"hosttttttttttttttttttttt",process.env.EMAIL_USER,process.env.SENDGRID_API_KEY);
       
       const htmlContent = `
